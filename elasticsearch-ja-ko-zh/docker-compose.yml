@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  elasticsearch:
+    image: ponsea/elasticsearch-ja-ko-zh:7.9.0
+    build:
+      context: ./
+      args:
+        - ES_IMG_VERSION=7.9.0
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      discovery.type: "single-node"
+    volumes:
+      - data:/usr/share/elasticsearch/data
+
+volumes:
+  data:
